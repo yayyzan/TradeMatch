@@ -1,7 +1,12 @@
-#include<iostream>
-using namespace std;
+#include <iostream>
+#include "engine/Exchange.h"
+#include "client/ClientInterface.h"
 
-int main(){
-    cout << "Order Book In Dev!" << endl;
-    return 0;
+int main() {
+    Exchange exchange; 
+    ClientInterface client(exchange); 
+
+    client.run(); 
+
+    return 0; 
 }

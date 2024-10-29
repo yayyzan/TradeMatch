@@ -19,7 +19,7 @@ cmake --build .
 if [ $? -eq 0 ]; then
     echo "Build successful. Running the executable..."
     # Run the executable
-    ./OrderMatchingEngine
+    ./TradeMatch
 else
     echo "Build failed. Please check the errors."
 fi

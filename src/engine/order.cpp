@@ -1,9 +1,9 @@
-#include "order.h"
+#include "Order.h"
 #include <stdexcept>
 #include <iostream>
 
-Order::Order(int id, double price, int quantity)
-    : id(id), price(price), quantity(quantity) {
+Order::Order(int id, double price, int quantity, OrderType type)
+    : id(id), price(price), quantity(quantity), type(type){
         
         if (quantity <= 0){
             throw std::invalid_argument("Quantity cannot be less than zero");
@@ -12,8 +12,6 @@ Order::Order(int id, double price, int quantity)
         if (price < 0){
             throw std::invalid_argument("Price must be greater than zero");
         }
-
-        std::cout << "Order placed -> ID: " << id << ", Price: " << price << ", Quantity: " << quantity << std::endl;
 }
 
 int Order::getId() const {
@@ -32,6 +30,14 @@ OrderStatus Order::getStatus() const {
     return status;
 }
 
+OrderType Order::getType() const {
+    return type;
+}
+
+bool Order::isBuyOrder() const {
+    return type == OrderType::Buy;
+}
+
 void Order::setStatus(OrderStatus status) {
     this->status = status;
 }
@@ -40,7 +46,7 @@ void Order::display() const {
     std::cout << "Order ID: " << id 
               << ", Price: " << price 
               << ", Quantity: " << quantity 
-              << ", Status: " << static_cast<int>(status) // You might want to implement a better way to print status
+              << ", Status: " << static_cast<int>(status) 
     << std::endl;
 }
 
@@ -52,7 +58,7 @@ void Order::revisePrice(double newPrice){
 }
 
 void Order::reviseQuantity(int newQuantity){
-    if (newQuantity <= 0) {
+    if (newQuantity < 0) {
         throw std::invalid_argument("Quantity must be greater than zero.");
     }
     quantity = newQuantity;

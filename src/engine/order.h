@@ -8,14 +8,21 @@ enum class OrderStatus{
     Cancelled
 };
 
+enum class OrderType{
+    Buy,
+    Sell
+};
+
 class Order {
 public:
-    Order(int id, double price, int quantity);
+    Order(int id, double price, int quantity, OrderType type);
 
     int getId() const;
     int getQuantity() const; 
     double getPrice() const;
     OrderStatus getStatus() const;
+    OrderType getType() const;
+    bool isBuyOrder() const;
 
     void setStatus(OrderStatus status);
 
@@ -29,6 +36,7 @@ private:
     double price; 
     int quantity;
     OrderStatus status;
+    OrderType type;
 };
 
 #endif
