@@ -12,7 +12,7 @@ class Order {
 public:
     Order(int id, double price, int quantity);
 
-    int getID() const;
+    int getId() const;
     int getQuantity() const; 
     double getPrice() const;
     OrderStatus getStatus() const;

@@ -16,7 +16,7 @@ Order::Order(int id, double price, int quantity)
         std::cout << "Order placed -> ID: " << id << ", Price: " << price << ", Quantity: " << quantity << std::endl;
 }
 
-int Order::getID() const {
+int Order::getId() const {
     return id;
 }
 
